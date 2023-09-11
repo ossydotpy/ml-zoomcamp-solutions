@@ -1,0 +1,1 @@
+this repo contains solutions to the 2023 cohort of [ml-zoomcamp](https://github.com/DataTalksClub/machine-learning-zoomcamp/blob/master/cohorts/2023/)
