@@ -1,7 +1,7 @@
 import pickle
 from flask import Flask, request
 
-with open('model2.bin', 'rb') as f:
+with open('model1.bin', 'rb') as f:
     model = pickle.load(f)
 
 with open('dv.bin', 'rb') as f:
