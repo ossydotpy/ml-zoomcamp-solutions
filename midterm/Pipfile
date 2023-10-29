@@ -8,13 +8,12 @@ flask = "*"
 gunicorn = "*"
 numpy = "*"
 xgboost = "*"
-scikit-learn = "==1.3.0"
 
 [dev-packages]
-scikit-learn = "==1.3.0"
 pandas = "*"
 seaborn = "*"
 requests = "*"
+scikit-learn = "==1.3.0"
 
 [requires]
 python_version = "3.10"

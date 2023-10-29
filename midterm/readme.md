@@ -26,3 +26,6 @@ To run this project, follow these steps:
     ```bash
     python test-predict.py
     ```
+
+> [!WARNING]
+> This model is for educational purposes only and may not provide accurate or reliable predictions. Please use caution and do not make critical decisions based solely on its outputs. Always consult with domain experts and consider real-world data before relying on this model for practical applications.
