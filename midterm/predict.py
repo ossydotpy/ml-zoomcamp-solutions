@@ -1,30 +1,47 @@
 import pickle
 import xgboost as xgb
-from flask import Flask, request
+from flask import Flask, jsonify, request
 
-with open('dv.bin', 'rb') as f:
-   dv = pickle.load(f)
+with open('model.bin', 'rb') as f:
+   model, dv = pickle.load(f)
 
-model = xgb.XGBClassifier()
-model.load_model('model.json')
 
 app = Flask('app')
 
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    features = request.get_json()
+    try:
+        features = request.get_json()
 
-    X = dv.transform([features])
-    y_pred = model.predict(X)
+        required_fields = [
+            "6th_stage", "a_stage", "age_group", "differentiate", "estrogen_status",
+            "grade", "lymph_node_positivity_%", "marital_status", "n_stage",
+            "progesterone_status", "race", "regional_node_examined", "regional_node_positive",
+            "size_classification", "survival_months", "t_stage"
+        ]
 
-    prediction = 'Dead' if y_pred[0] == 1 else 'Survive'
+        missing_fields = [field for field in required_fields if field not in features]
+        if missing_fields:
+            return jsonify({"error": f"Missing fields: {', '.join(missing_fields)}"}), 400
 
-    response = {
-        "status": str(prediction)
-    }
+        if not isinstance(features["lymph_node_positivity_%"], (int, float)) or features["lymph_node_positivity_%"] < 0:
+            return jsonify({"error": "Invalid 'lymph_node_positivity_%' value"}), 400
 
-    return response
+
+        X = dv.transform([features])
+        y_pred = model.predict(X)
+
+        prediction = 'Dead' if y_pred[0] == 1 else 'Survive'
+
+        response = {
+            "status": prediction
+        }
+
+        return jsonify(response), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 
 
 if __name__=='__main__':

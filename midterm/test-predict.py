@@ -20,11 +20,16 @@ patient =  {
     "survival_months": 102,
     "t_stage": "t1"
   }
-request = requests.post(url,json=patient)
-
-if request.status_code == 200:
-    response = request.json()
-    if response['status'] == 'Dead':
-        print('patient is likely not going to survive.')
+try:
+    response = requests.post(url, json=patient)
+    
+    if response.status_code == 200:
+        data = response.json()
+        if data.get('status') == 'Dead':
+            print('The patient is likely not going to survive.')
+        else:
+            print('The patient will survive.')
     else:
-        print('Patient will survive.')
+        print(f'Request failed with status code {response.status_code}')
+except requests.exceptions.RequestException as e:
+    print(f'Request error: {e}')

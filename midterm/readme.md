@@ -7,6 +7,8 @@ Breast cancer is one of the most prevalent and life-threatening diseases among w
 ## Solution
 Our solution involves building a machine learning model using Python to predict breast cancer survival. We will utilize a dataset containing various patient features, such as age, tumor size, lymph node information, and more, to train and evaluate our predictive model. We will consider metrics like accuracy, recall, and precision to assess the model's performance.
 
+You can find the dataset used [here](https://www.kaggle.com/datasets/reihanenamdari/breast-cancer/data)
+
 ## Getting Started
 To run this project, follow these steps:
 
@@ -19,13 +21,16 @@ To run this project, follow these steps:
     ```bash
     docker run -it --rm -p 4041:4041 <image-name>
     ```
-4. Find patient records in the [patient-test-dataset](Datasets/patient-test-dataset) file.
-5. Run `pipenv shell` to activate the virtual environment.
-6. Run `pipenv install --dev` to install development packages.
-7. Edit the `test-predict.py` script with any record from the patient dataset and run it using the command:
+4. Run `pipenv shell` to activate the virtual environment.
+
+5. Run `pipenv install --dev` to install development packages.
+
+6. Run
     ```bash
     python test-predict.py
-    ```
+    ``` to test the prediction service.
+
+You can modify the `test-predict.py` file with samples from the [patient-test-dataset](Datasets/patient-test-dataset) file.
 
 > [!WARNING]
 > This model is for educational purposes only and may not provide accurate or reliable predictions. Please use caution and do not make critical decisions based solely on its outputs. Always consult with domain experts and consider real-world data before relying on this model for practical applications.
