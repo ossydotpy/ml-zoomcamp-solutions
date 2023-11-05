@@ -3,22 +3,20 @@ import requests
 url = 'http://0.0.0.0:4041/predict'
 
 patient =  {
-    "6th_stage": "iia",
-    "a_stage": "regional",
-    "age_group": "senior",
-    "differentiate": "well_differentiated",
+    "age": 64,
+    "t_stage": "t3",
+    "n_stage": "n3",
+    "6th_stage": "iiic",
+    "differentiate": "poorly_differentiated",
+    "grade": "3",
+    "tumor_size": 55,
     "estrogen_status": "positive",
-    "grade": "1",
-    "lymph_node_positivity_%": 50.0,
-    "marital_status": "married",
-    "n_stage": "n1",
     "progesterone_status": "negative",
-    "race": "white",
-    "regional_node_examined": 2,
-    "regional_node_positive": 1,
-    "size_classification": "Small",
-    "survival_months": 102,
-    "t_stage": "t1"
+    "regional_node_examined": 12,
+    "regional_node_positive": 11,
+    "survival_months": 7,
+    "size_classification": "Medium",
+    "lymph_node_positivity_%": 91.6666666667
   }
 try:
     response = requests.post(url, json=patient)

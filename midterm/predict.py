@@ -1,5 +1,4 @@
 import pickle
-import xgboost as xgb
 from flask import Flask, jsonify, request
 
 with open('model.bin', 'rb') as f:
@@ -14,12 +13,10 @@ def predict():
     try:
         features = request.get_json()
 
-        required_fields = [
-            "6th_stage", "a_stage", "age_group", "differentiate", "estrogen_status",
-            "grade", "lymph_node_positivity_%", "marital_status", "n_stage",
-            "progesterone_status", "race", "regional_node_examined", "regional_node_positive",
-            "size_classification", "survival_months", "t_stage"
-        ]
+        required_fields = ['age', 't_stage', 'n_stage', '6th_stage', 'differentiate', 'grade',
+       'tumor_size', 'estrogen_status', 'progesterone_status',
+       'regional_node_examined', 'regional_node_positive', 'survival_months',
+       'size_classification', 'lymph_node_positivity_%']
 
         missing_fields = [field for field in required_fields if field not in features]
         if missing_fields:
