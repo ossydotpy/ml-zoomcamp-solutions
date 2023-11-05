@@ -39,13 +39,7 @@ TTo run this project, follow these steps:
     docker run -it --rm -p 4041:4041 <image-name>
     ```
 
-4. Activate the virtual environment using `pipenv`:
-
-    ```bash
-    pipenv shell
-    ```
-
-5. Install development packages with the following command:
+4. Install development packages with the following command:
 
     ```bash
     pipenv install --dev
