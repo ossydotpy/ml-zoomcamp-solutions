@@ -1,0 +1,55 @@
+import requests
+
+host = 'http://0.0.0.0:4041/predict'
+
+data = [
+    {'sex': 1,
+  'age': 60,
+  'height': 160,
+  'weight': 60,
+  'waistline': 78.0,
+  'sight_left': 0.6,
+  'sight_right': 0.8,
+  'hear_left': 1.0,
+  'hear_right': 1.0,
+  'sbp': 97.0,
+  'dbp': 66.0,
+  'blds': 84.0,
+  'tot_chole': 168.0,
+  'hdl_chole': 67.0,
+  'ldl_chole': 90.0,
+  'triglyceride': 57.0,
+  'hemoglobin': 13.3,
+  'urine_protein': 1.0,
+  'serum_creatinine': 0.7,
+  'sgot_ast': 21.0,
+  'sgot_alt': 16.0,
+  'gamma_gtp': 11.0,
+  'smk_stat_type_cd': 1.0},
+  {'sex': 1,
+  'age': 20,
+  'height': 165,
+  'weight': 60,
+  'waistline': 79.0,
+  'sight_left': 0.9,
+  'sight_right': 1.0,
+  'hear_left': 1.0,
+  'hear_right': 1.0,
+  'sbp': 115.0,
+  'dbp': 69.0,
+  'blds': 98.0,
+  'tot_chole': 206.0,
+  'hdl_chole': 112.0,
+  'ldl_chole': 79.0,
+  'triglyceride': 75.0,
+  'hemoglobin': 15.3,
+  'urine_protein': 1.0,
+  'serum_creatinine': 0.9,
+  'sgot_ast': 22.0,
+  'sgot_alt': 15.0,
+  'gamma_gtp': 16.0,
+  'smk_stat_type_cd': 1.0}
+  ]
+
+response = requests.post(url=host, json=data).json()
+print(response)
